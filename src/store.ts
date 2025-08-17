@@ -16,6 +16,7 @@ const defaultPreferences: Preferences = {
     main: 'New Computer Modern',
     mono: 'Liberation Mono',
   },
+  theme: 'dark',
   // Preview optimization settings
   render_debounce_ms: 400,
   focused_preview_enabled: true,

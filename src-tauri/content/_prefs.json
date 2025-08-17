@@ -12,6 +12,7 @@
     "main": "New Computer Modern",
     "mono": "New Computer Modern Mono"
   },
+  "theme": "dark",
   "render_debounce_ms": 400,
   "focused_preview_enabled": true,
   "preserve_scroll_position": true

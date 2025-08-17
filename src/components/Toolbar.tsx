@@ -1,14 +1,16 @@
 import React from 'react';
 import { useAppStore } from '../store';
-import { showOpenDialog } from '../api';
+import { showOpenDialog, setPreferences as savePreferences, applyPreferences } from '../api';
 import './Toolbar.css';
 
 const Toolbar: React.FC = () => {
-  const { 
-    previewVisible, 
-    setPreviewVisible, 
+  const {
+    previewVisible,
+    setPreviewVisible,
     setPrefsModalOpen,
-    editor
+    editor,
+    preferences,
+    setPreferences: updatePreferences,
   } = useAppStore();
 
   const handleTogglePreview = () => {
@@ -17,6 +19,16 @@ const Toolbar: React.FC = () => {
 
   const handleOpenPreferences = () => {
     setPrefsModalOpen(true);
+  };
+
+  const handleThemeChange = async (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const newTheme = e.target.value as 'dark' | 'light';
+    const newPrefs = { ...preferences, theme: newTheme };
+    await savePreferences(newPrefs);
+    updatePreferences(newPrefs);
+    await applyPreferences();
   };
 
   const handleExportPDF = async () => {
@@ -63,10 +75,16 @@ const Toolbar: React.FC = () => {
           📄 Export PDF
         </button>
         
-        <button 
-          onClick={handleOpenPreferences}
-          title="Preferences"
+        <select
+          value={preferences.theme}
+          onChange={handleThemeChange}
+          title="Interface Theme"
         >
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+        </select>
+
+        <button onClick={handleOpenPreferences} title="Preferences">
           ⚙️ Preferences
         </button>
       </div>

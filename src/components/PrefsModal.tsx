@@ -200,6 +200,22 @@ const PrefsModal: React.FC = () => {
               </label>
             </div>
           </div>
+
+          <div className="prefs-section">
+            <h3>Theme</h3>
+            <div className="form-group">
+              <label htmlFor="theme">Interface Theme</label>
+              <select
+                id="theme"
+                name="theme"
+                value={formData.theme}
+                onChange={handleInputChange}
+              >
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+              </select>
+            </div>
+          </div>
           
           <div className="prefs-section">
             <h3>Images</h3>

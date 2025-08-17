@@ -6,6 +6,7 @@ use std::path::PathBuf;
 use tauri::AppHandle;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(default)]
 pub struct Preferences {
     pub papersize: String,  // Changed from paper_size to papersize for Typst compatibility
     pub margin: Margins,    // Changed from margins to margin for Typst compatibility
@@ -15,6 +16,7 @@ pub struct Preferences {
     pub default_image_width: String,
     pub default_image_alignment: String,
     pub fonts: Fonts,
+    pub theme: String,
     // Preview optimization settings
     pub render_debounce_ms: u32,
     pub focused_preview_enabled: bool,
@@ -49,6 +51,7 @@ impl Default for Preferences {
                 main: "New Computer Modern".to_string(),
                 mono: "Liberation Mono".to_string(),
             },
+            theme: "dark".to_string(),
             // Preview optimization defaults
             render_debounce_ms: 400,  // 400ms for responsive feel
             focused_preview_enabled: true,

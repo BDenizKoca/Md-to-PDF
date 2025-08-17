@@ -19,14 +19,15 @@ import StatusBar from './components/StatusBar';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const { 
-    setPreferences, 
-    previewVisible, 
+  const {
+    setPreferences,
+    previewVisible,
     prefsModalOpen,
     editor,
     setCurrentFile,
     setContent,
-    addOpenFile
+    addOpenFile,
+    preferences
   } = useAppStore();
 
   // Initialize app
@@ -112,6 +113,10 @@ Happy writing!
     
     init();
   }, [editor.currentFile, setPreferences, setCurrentFile, setContent, addOpenFile]);
+
+  useEffect(() => {
+    document.body.classList.toggle('light', preferences.theme === 'light');
+  }, [preferences.theme]);
 
   if (loading) {
     return <div className="loading">Loading...</div>;

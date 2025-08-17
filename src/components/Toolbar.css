@@ -22,7 +22,8 @@
   gap: 0.5rem;
 }
 
-.toolbar-actions button {
+.toolbar-actions button,
+.toolbar-actions select {
   --btn-bg: #059669;       /* emerald-600 - more visible green */
   --btn-bg-hover: #047857; /* emerald-700 - darker hover */
   --btn-bg-active: #065f46;/* emerald-800 - active/pressed */
@@ -47,7 +48,8 @@
   outline: none;
 }
 
-.toolbar-actions button:hover:not(:disabled) {
+.toolbar-actions button:hover:not(:disabled),
+.toolbar-actions select:hover:not(:disabled) {
   background: var(--btn-bg-hover);
   box-shadow: 0 3px 6px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.15) inset;
   transform: translateY(-1px);
@@ -65,11 +67,13 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.55) inset, 0 0 0 1px rgba(255,255,255,0.06);
 }
 
-.toolbar-actions button:focus-visible {
+.toolbar-actions button:focus-visible,
+.toolbar-actions select:focus-visible {
   box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #2563eb, 0 1px 2px rgba(0,0,0,0.4);
 }
 
-.toolbar-actions button:disabled {
+.toolbar-actions button:disabled,
+.toolbar-actions select:disabled {
   opacity: 0.55;
   cursor: not-allowed;
   background: #475569;
@@ -81,13 +85,16 @@
 /* High-contrast mode support */
 @media (forced-colors: active) {
   .toolbar-actions button,
-  .toolbar-actions button:focus-visible {
+  .toolbar-actions button:focus-visible,
+  .toolbar-actions select,
+  .toolbar-actions select:focus-visible {
     forced-color-adjust: none;
     background: ButtonFace;
     color: ButtonText;
     border-color: ButtonText;
   }
-  .toolbar-actions button:focus-visible { outline: 2px solid Highlight; }
+  .toolbar-actions button:focus-visible,
+  .toolbar-actions select:focus-visible { outline: 2px solid Highlight; }
 }
 
 /* Light theme override if body has light class */
@@ -97,11 +104,13 @@ body.light .toolbar {
   border-bottom-color: #cbd5e1;
 }
 body.light .toolbar-logo h1 { color:#102a43; }
-body.light .toolbar-actions button {
+body.light .toolbar-actions button,
+body.light .toolbar-actions select {
   --btn-bg:#2563eb;
   --btn-bg-hover:#1d4ed8;
   --btn-bg-active:#1e40af;
   --btn-border:#1e3a8a;
   --btn-text:#ffffff;
 }
-body.light .toolbar-actions button:disabled { background:#94a3b8; border-color:#64748b; color:#f1f5f9; }
+body.light .toolbar-actions button:disabled,
+body.light .toolbar-actions select:disabled { background:#94a3b8; border-color:#64748b; color:#f1f5f9; }

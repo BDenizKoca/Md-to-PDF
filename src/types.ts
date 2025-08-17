@@ -23,6 +23,7 @@ export interface Preferences {
   default_image_width: string;
   default_image_alignment: string;
   fonts: Fonts;
+  theme: 'dark' | 'light';
   // Preview optimization settings
   render_debounce_ms: number;
   focused_preview_enabled: boolean;
